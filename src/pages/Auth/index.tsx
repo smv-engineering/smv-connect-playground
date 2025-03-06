@@ -50,6 +50,7 @@ const AuthPage = () => {
   const handleSubmit = async (values: TAuthData) => {
     setAuthData(values);
     await generateAuthToken();
+    setIsModalVisible(true);
   };
 
   return (

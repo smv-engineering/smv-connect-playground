@@ -1,54 +1,68 @@
-# React + TypeScript + Vite
+# SMV Connect API Playground
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository is a playground for the SMV Connect API, which can be used for applying for a visa for anyone from India. The UI playground is built using React, Tailwind CSS, TypeScript, and Ant Design components.
 
-Currently, two official plugins are available:
+A deployed version is available at [playground.stampmyvisa.com](https://playground.stampmyvisa.com).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Pages Summary
 
-## Expanding the ESLint configuration
+### 1. Home Page
+The home page provides information about our product, SMV Connect, and includes:
+- A brief description of SMV Connect
+- A link to our landing page
+- A link to our Postman documentation
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 2. Auth Page
+The Auth Page contains a form with three fields: environment, client ID, and client secret. Default values are provided for each field:
+- Environment: `staging`
+- Client ID: `<client_id>`
+- Client Secret: `<client_secret>`
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+Users can use these default values or input their own to generate an auth token using the API. The information is stored in an auth context to be used later in other components. This information is also displayed in a modal, which can be opened on any page by clicking a button in the top right corner.
+
+### 3. Pre-built Playgrounds Page
+This page displays cards with the following information for each pre-built playground:
+- Playground Name
+- Description
+- A photo showing what it looks like
+- Tags indicating which APIs are used in the playground
+
+Clicking on any playground opens a separate route for that playground, where components built on top of the APIs are shown. For example:
+- **Playground Name:** List Orders
+- **Description:** Use the search API to list active orders in a tabular form
+- **Photo:** `<link>`
+- **Tags:** search-orders
+
+### 4. Playground Page
+This page renders a playground based on URL parameters. It includes components that use different APIs to demonstrate the powerful capabilities of our APIs. For example, the List Orders Playground shows a table using Ant Design that lists orders using the search API. It includes search capability and filtering on order status. The token and environment from the Auth Context are used to populate data for this component.
+
+## Getting Started
+
+To scaffold the project, create a new repository with all the boilerplate and npm packages configured. We will use npm and Vite for this.
+
+```bash
+# Clone the repository
+git clone https://github.com/smv-engineering/smv-connect-playground.git
+
+# Navigate to the project directory
+cd smv-connect-playground
+
+# Install dependencies
+npm install
+
+# Start the development server
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Available Scripts
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+In the project directory, you can run:
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+`npm run dev`
+Runs the app in development mode. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+`npm run build`
+Builds the app for production to the `dist` folder.
+
+`npm run lint`
+Runs ESLint to check for linting errors.
