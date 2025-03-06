@@ -1,26 +1,29 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { ConfigProvider } from "antd";
-import HomePage from "./pages/HomePage";
-// import Navbar from "./components/Navbar";
-import {AuthWrapper } from "./Context";
-import AuthPage from "./pages/Auth";
-import Playgrounds from "./pages/PlayGrounds";
-import Playground from "./pages/PlayGround";
-// import "tailwindcss/tailwind.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { ConfigProvider, Layout } from "antd";
+import { AuthWrapper } from "./Context";
+import { ROUTES } from "./constants";
+import Sidebar from "./components/Sidebar";
 
-const router = createBrowserRouter([
-  { path: "/", element: <HomePage /> },
-  { path: "/auth", element: <AuthPage /> },
-  { path: "/playground", element: <Playground /> },
-  { path: "/playgrounds", element: <Playgrounds /> },
- 
-]);
+const { Content } = Layout;
 
 const App = () => {
   return (
     <AuthWrapper>
       <ConfigProvider>
-        <RouterProvider router={router} />
+        <Router>
+          <Layout style={{ minHeight: "100vh", display: "flex" }}>
+            <Sidebar />
+            <Layout>
+              <Content style={{ padding: "24px", background: "#f4f4f4" }}>
+                <Routes>
+                  {ROUTES.map((r) => (
+                    <Route key={r.key} path={r.path} element={r.page} />
+                  ))}
+                </Routes>
+              </Content>
+            </Layout>
+          </Layout>
+        </Router>
       </ConfigProvider>
     </AuthWrapper>
   );

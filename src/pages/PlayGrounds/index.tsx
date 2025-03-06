@@ -1,7 +1,7 @@
 import { Card } from "antd";
 import { useNavigate } from "react-router-dom";
-import { PLAYGROUNDS } from "./constants";
 import APITag from "../../components/APITag";
+import { PLAYGROUNDS } from "../../constants";
 
 const Playgrounds = () => {
   const navigate = useNavigate();

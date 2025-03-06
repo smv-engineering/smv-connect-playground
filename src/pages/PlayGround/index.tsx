@@ -1,7 +1,7 @@
 import { useSearchParams } from "react-router-dom";
 import { Card, Tag } from "antd";
 import { IPlaygroundConfig } from "../../types";
-import { PLAYGROUNDS } from "../PlayGrounds/constants";
+import { PLAYGROUNDS } from "../../constants";
 
 const Playground= () => {
   const [searchParams] = useSearchParams();
