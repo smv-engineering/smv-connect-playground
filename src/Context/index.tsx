@@ -6,7 +6,7 @@ export type TAuthData = {
   clientId: string;
   clientSecret: string;
   server: string;
-  environment: string;
+  environment: 'staging' | 'production';
   token: string;
 }
 
@@ -23,7 +23,7 @@ export const AuthWrapper = ({ children }: { children: React.ReactNode }) => {
   const [authData, setAuthData] = useState<TAuthData>({
     clientId: "",
     clientSecret: "",
-    environment: "",
+    environment: "staging",
     token: "",
     server: "",
   });
@@ -39,8 +39,7 @@ export const AuthWrapper = ({ children }: { children: React.ReactNode }) => {
         server: authData.server,
       });
     } catch (error) {
-      console.error("Error generating auth token:", error);
-      throw new Error("Failed to generate token");
+      console.error(error);
     };
   }
 

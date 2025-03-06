@@ -12,13 +12,13 @@ const HomePage = () => {
   
         <div className="mt-8 flex space-x-4">
           <a
-            href="https://your-landing-page.com"
+            href="https://stampmyvisa.com"
             className="px-6 py-3 text-lg font-medium bg-blue-600 text-white rounded-xl shadow-md hover:bg-blue-700 transition"
           >
             Visit Landing Page
           </a>
           <a
-            href="https://postman-docs.com"
+            href="https://www.postman.com/smv-engineering/smv-connect/overview"
             className="px-6 py-3 text-lg font-medium bg-gray-200 text-gray-900 rounded-xl shadow-md hover:bg-gray-300 transition"
           >
             View API Documentation

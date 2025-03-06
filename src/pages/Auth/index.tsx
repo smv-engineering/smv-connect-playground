@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { TAuthData, useAuthContext } from "../../Context";
-import { Modal, Input, Button, Form, Card, Select, Checkbox, message } from "antd";
+import { Modal, Input, Button, Form, Card, Select, Checkbox } from "antd";
 
 const defaultCredentials: Record<TAuthData['environment'], TAuthData> = {
   staging: { 
@@ -27,7 +27,7 @@ const AuthPage = () => {
 
   const handleEnvironmentChange = (env: string) => {
     if (useDefault) {
-      form.setFieldsValue(defaultCredentials[env]);
+      form.setFieldsValue(defaultCredentials[env as TAuthData['environment']] );
     }
   };
 
@@ -36,7 +36,7 @@ const AuthPage = () => {
     setUseDefault(e.target.checked);
     const env = form.getFieldValue("environment");
     if (e.target.checked && env) {
-      form.setFieldsValue(defaultCredentials[env]);
+      form.setFieldsValue(defaultCredentials[env as TAuthData['environment']]);
     } else {
       form.setFieldsValue({
         clientId: "",
@@ -49,14 +49,7 @@ const AuthPage = () => {
 
   const handleSubmit = async (values: TAuthData) => {
     setAuthData(values);
-    try {
-      await generateAuthToken();
-      message.success("Token generated successfully");
-      setIsModalVisible(true);
-    } catch (error) {
-      console.error(error);
-      message.error("Error generating token");
-    }
+    await generateAuthToken();
   };
 
   return (
