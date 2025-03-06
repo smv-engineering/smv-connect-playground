@@ -8,6 +8,14 @@ const tagColors: Record<API_NAME, string> = {
   SEARCH_ORDERS: "bg-purple-500 text-white",
 };
 
+const tagName: Record<API_NAME, string> = {
+  GENERATE_TOKEN: "Generate Token",
+  CREATE_ORDER: "Create Order",
+  UPLOAD_BULK_DOCS: "Upload Bulk Docs",
+  SEARCH_ORDERS: "Search Orders",
+};
+
+
 interface PlaygroundTagProps {
   tag: API_NAME;
 }
@@ -16,7 +24,7 @@ const APITag: React.FC<PlaygroundTagProps> = ({ tag }) => {
   return (
     <span className={`px-3 py-1 rounded-lg text-sm font-medium ${tagColors[tag]}`}
     >
-      {tag.replace(/_/g, " ")}
+      {tagName[tag]}
     </span>
   );
 };

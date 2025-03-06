@@ -11,6 +11,7 @@ import {
 import { JSX } from "react";
 import { IPlaygroundConfig } from "./types";
 import HomePage from "./pages/HomePage";
+import ListOrders from "./pages/PlayGround/playgrounds/ListOrders";
 
 export const PLAYGROUNDS: IPlaygroundConfig[] = [
   {
@@ -19,7 +20,7 @@ export const PLAYGROUNDS: IPlaygroundConfig[] = [
     description: "Use search API to list active orders in a tabular form.",
     photo: "/assets/playgrounds/list-orders.png",
     tags: ["SEARCH_ORDERS"],
-    component: <div>Component for List Orders</div>,
+    component: <ListOrders />,
   },
   {
     name: "Create Order",

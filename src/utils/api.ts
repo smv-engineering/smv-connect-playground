@@ -16,3 +16,21 @@ export const generateAuthToken = async (
   const response = await axios.request(request);
   return response.data.data;
 };
+
+export const searchOrders = async (
+  authData: TAuthData,
+  data: { pageNo: number; pageSize: number }
+): Promise<unknown> => {
+  const { server, token } = authData;
+  const { pageNo, pageSize } = data;
+  const request: AxiosRequestConfig = {
+    url: `${server}/api/v1/orders/search?page_no=${pageNo}&page_size=${pageSize}`,
+    method: "GET",
+    headers: {
+      Authorization: token,
+    },
+  };
+
+  const response = await axios.request(request);
+  return response.data;
+};
