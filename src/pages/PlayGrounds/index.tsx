@@ -12,20 +12,28 @@ const Playgrounds = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl">
         {PLAYGROUNDS.map((playground) => (
           <Card
-            key={playground.name}
-            hoverable
-            cover={<img alt={playground.name} src={playground.photo} className="h-48 w-full object-cover rounded-t-lg" />}
-            className="rounded-lg shadow-md"
-            onClick={() => navigate(`/playground/?id=${playground.id}`)}
-          >
-            <h2 className="text-xl font-semibold text-gray-800">{playground.name}</h2>
-            <p className="text-gray-600 text-sm mt-2">{playground.description}</p>
-            <div className="flex flex-wrap mt-4 gap-2">
-              {playground.tags.map((tag) => (
-                <APITag key={tag} tag={tag} />
-              ))}
+          key={playground.name}
+          hoverable
+          cover={
+            <div className="h-48 w-full overflow-hidden rounded-t-lg">
+              <img 
+                alt={playground.name} 
+                src={playground.photo} 
+                className="h-full w-full object-cover" 
+              />
             </div>
-          </Card>
+          }
+          className="rounded-lg shadow-md"
+          onClick={() => navigate(`/playground/?id=${playground.id}`)}
+        >
+          <h2 className="text-xl font-semibold text-gray-800">{playground.name}</h2>
+          <p className="text-gray-600 text-sm mt-2">{playground.description}</p>
+          <div className="flex flex-wrap mt-4 gap-2">
+            {playground.tags.map((tag) => (
+              <APITag key={tag} tag={tag} />
+            ))}
+          </div>
+        </Card>
         ))}
       </div>
     </div>
