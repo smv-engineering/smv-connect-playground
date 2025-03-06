@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { TAuthData, useAuthContext } from "../Context";
+import { TAuthData, useAuthContext } from "../../Context";
 import { Modal, Input, Button, Form, Card, Select, Checkbox, message } from "antd";
 
 const defaultCredentials: Record<TAuthData['environment'], TAuthData> = {
