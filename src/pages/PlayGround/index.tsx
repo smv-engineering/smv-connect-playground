@@ -1,7 +1,8 @@
 import { useSearchParams } from "react-router-dom";
-import { Card, Tag } from "antd";
+import { Card } from "antd";
 import { IPlaygroundConfig } from "../../types";
 import { PLAYGROUNDS } from "../../constants";
+import APITag from "../../components/APITag";
 
 const Playground= () => {
   const [searchParams] = useSearchParams();
@@ -19,7 +20,7 @@ const Playground= () => {
         <p className="text-gray-600 mb-4">{playground.description}</p>
         <div className="mb-6 flex flex-wrap gap-2">
           {playground.tags.map((tag) => (
-            <Tag key={tag} color="blue">{tag}</Tag>
+           <APITag key={tag} tag={tag} />
           ))}
         </div>
         <div className="mt-6">

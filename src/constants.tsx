@@ -18,7 +18,7 @@ export const PLAYGROUNDS: IPlaygroundConfig[] = [
     name: "List Orders",
     id: "list-orders",
     description: "Use search API to list active orders in a tabular form.",
-    photo: "src/assets/playgrounds/list-orders.png",
+    photo: "src/assets/list-orders.png",
     tags: ["SEARCH_ORDERS"],
     component: <ListOrders />,
   },
