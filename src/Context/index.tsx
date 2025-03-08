@@ -13,8 +13,17 @@ export type TAuthData = {
 export type TAuthContext = {
   authData: TAuthData;
   setAuthData: (data: TAuthData) => void;
-  generateAuthToken: () => Promise<void>;
+  generateAuthToken: (data: TAuthData) => Promise<void>;
 }
+
+// eslint-disable-next-line react-refresh/only-export-components
+export const DEFAULT_CREDENTIALS: TAuthData = { 
+  clientId: "BJPuwh-D9j3EV-L9vgdW",
+  clientSecret: "rFaQeB-06eJQb-H3eWK8", 
+  environment: "staging", 
+  token: "",
+  server: "https://api.qa.stampmyvisa.com"
+};
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const AuthContext = createContext<TAuthContext | undefined>(undefined);
@@ -28,15 +37,15 @@ export const AuthWrapper = ({ children }: { children: React.ReactNode }) => {
     server: "",
   });
 
-  const _generateAuthToken = async () => {
+  const _generateAuthToken = async (data: TAuthData) => {
     try {
-      const token = await generateAuthToken(authData);
+      const token = await generateAuthToken(data);
       setAuthData({ 
-        clientId: authData.clientId,
-        clientSecret: authData.clientSecret,
-        environment: authData.environment,
+        clientId: data.clientId,
+        clientSecret: data.clientSecret,
+        environment: data.environment,
         token,
-        server: authData.server,
+        server: data.server,
       });
     } catch (error) {
       console.error(error);
