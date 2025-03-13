@@ -30,10 +30,12 @@ export const VisaDetails = ({
 
   if (!reqData)
     return (
-      <div className="mt-4 bg-gray-50 rounded-lg text-center border-2 border-gray-300 h-100 w-full flex items-center justify-center">
-        <p className="text-gray-500 text-lg">
-          Select a visa type to see details
-        </p>
+      <div className="w-2/3 max-h-100 p-6 flex items-center justify-center">
+        <div className="bg-gray-50 rounded-lg text-center border-2 border-gray-300 p-6 flex items-center justify-center">
+          <p className="text-gray-500 text-lg">
+            Select a visa type to see details
+          </p>
+        </div>
       </div>
     );
 
