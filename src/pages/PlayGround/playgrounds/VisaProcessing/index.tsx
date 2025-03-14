@@ -7,12 +7,12 @@ import { VisaDetails } from "../../../../components/Visaprocessing/VisaDetails";
 const VisaProcessing = () => {
   const {
     isAuthenticated,
-    loading,
+    visaTypesLoading,
+    visaReqLoading,
     countries,
-    countryLoading,
-    selectedCountryDetails,
-    selectedVisaRequirementDetails,
     selectedCountry,
+    visaTypes,
+    visaRequirement,
     fetchCountries,
     handleCountryChange,
     handleVisaClick,
@@ -45,17 +45,16 @@ const VisaProcessing = () => {
         handleCountryChange={handleCountryChange}
       />
       {selectedCountry && (
-        <div className="flex flex-row">
-          {selectedCountryDetails && (
-            <VisaList
-              countryLoading={countryLoading}
-              selectedCountryDetails={selectedCountryDetails}
-              handleVisaClick={handleVisaClick}
-            />
-          )}
+        <div className="flex flex-row gap-4">
+          <VisaList
+            countryLoading={visaTypesLoading}
+            selectedCountryDetails={visaTypes}
+            handleVisaClick={handleVisaClick}
+          />
+
           <VisaDetails
-            loading={loading}
-            selectedVisaRequirementDetails={selectedVisaRequirementDetails}
+            loading={visaReqLoading}
+            selectedVisaRequirementDetails={visaRequirement}
           />
         </div>
       )}
