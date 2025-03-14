@@ -1,5 +1,12 @@
 import axios, { AxiosRequestConfig } from "axios";
 import { TAuthData } from "../Context";
+import {
+  CountriesApiResponse,
+  VisaRequirementApiResponse,
+  VisaTypesApiResponse,
+} from "./interfaces";
+import api from "./axios";
+import { ApiResponse } from "../pages/PlayGround/playgrounds/ListOrders";
 
 export const generateAuthToken = async (
   authData: TAuthData
@@ -20,71 +27,50 @@ export const generateAuthToken = async (
 export const searchOrders = async (
   authData: TAuthData,
   data: { pageNo: number; pageSize: number }
-): Promise<unknown> => {
-  const { server, token } = authData;
-  const { pageNo, pageSize } = data;
-  const request: AxiosRequestConfig = {
-    url: `${server}/api/v1/orders/search?page_no=${pageNo}&page_size=${pageSize}`,
-    method: "GET",
-    headers: {
-      Authorization: token,
-    },
-  };
-
-  const response = await axios.request(request);
+): Promise<ApiResponse> => {
+  const response = await api.get<ApiResponse>("/api/v1/orders", {
+    baseURL: authData.server,
+    params: { page_no: data.pageNo, page_size: data.pageSize },
+    headers: { Authorization: authData.token },
+  });
   return response.data;
 };
 
 export const getCountries = async (
   authData: TAuthData,
-  data: { pageNo: number; pageSize: number }
-): Promise<unknown> => {
-  const { server, token } = authData;
-  const { pageNo, pageSize } = data;
-  const request: AxiosRequestConfig = {
-    url: `${server}/api/v1/countries?page_no=${pageNo}&page_size=${pageSize}`,
-    method: "GET",
-    headers: {
-      Authorization: token,
-    },
-  };
-
-  const response = await axios.request(request);
+  { pageNo, pageSize }: { pageNo: number; pageSize: number }
+): Promise<CountriesApiResponse> => {
+  const response = await api.get<CountriesApiResponse>("/api/v1/countries", {
+    baseURL: authData.server,
+    params: { page_no: pageNo, page_size: pageSize },
+    headers: { Authorization: authData.token },
+  });
   return response.data;
 };
 
 export const getCountryDetailsByCountry = async (
   authData: TAuthData,
   data: { symbol: string }
-): Promise<unknown> => {
-  const { server, token } = authData;
-  const { symbol } = data;
-  const request: AxiosRequestConfig = {
-    url: `${server}/api/v1/visa_types?symbol=${symbol}`,
-    method: "GET",
-    headers: {
-      Authorization: token,
-    },
-  };
-
-  const response = await axios.request(request);
+): Promise<VisaTypesApiResponse> => {
+  const response = await api.get<VisaTypesApiResponse>(`/api/v1/visa_types`, {
+    baseURL: authData.server,
+    params: { symbol: data.symbol },
+    headers: { Authorization: authData.token },
+  });
   return response.data;
 };
 
 export const getVisaRequirements = async (
   authData: TAuthData,
-  data: { visa_type_id: string }
-): Promise<unknown> => {
-  const { server, token } = authData;
-  const { visa_type_id } = data;
-  const request: AxiosRequestConfig = {
-    url: `${server}/api/v1/visa_types/requirements?visa_type_id=${visa_type_id}`,
-    method: "GET",
-    headers: {
-      Authorization: token,
-    },
-  };
-
-  const response = await axios.request(request);
+  { visa_type_id }: { visa_type_id: string }
+): Promise<VisaRequirementApiResponse> => {
+  const response = await api.get<VisaRequirementApiResponse>(
+    "/api/v1/visa_types/requirements",
+    {
+      baseURL: authData.server,
+      params: { visa_type_id },
+      headers: { Authorization: authData.token },
+    }
+  );
   return response.data;
 };

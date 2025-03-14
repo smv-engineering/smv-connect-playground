@@ -44,7 +44,7 @@ interface Order {
   visaType: VisaType;
 }
 
-interface ApiResponse {
+export interface ApiResponse {
   statusCode: number;
   success: boolean;
   data: {
@@ -79,7 +79,10 @@ const ListOrders = () => {
   const fetchOrders = useCallback(async () => {
     try {
       setLoading(true);
-      const data = (await searchOrders(authData, {pageNo: page, pageSize})) as ApiResponse;
+      const data = (await searchOrders(authData, {
+        pageNo: page,
+        pageSize,
+      })) as ApiResponse;
       setOrders(data.data.data);
       setTotal(data.data.metaData.total);
     } catch (err) {
@@ -87,7 +90,7 @@ const ListOrders = () => {
     } finally {
       setLoading(false);
     }
-  }, [authData,page, pageSize]);
+  }, [authData, page, pageSize]);
 
   useEffect(() => {
     fetchOrders();
