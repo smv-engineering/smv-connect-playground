@@ -39,7 +39,7 @@ const VisaProcessing = () => {
   }
 
   return (
-    <div className="flex flex-col p-6 bg-white shadow rounded-lg max-h-[100vh]">
+    <div className="flex flex-col p-6 bg-white rounded-lg max-h-[100vh]">
       <VisaSearch
         countries={countries}
         handleCountryChange={handleCountryChange}
@@ -50,6 +50,7 @@ const VisaProcessing = () => {
             countryLoading={visaTypesLoading}
             selectedCountryDetails={visaTypes}
             handleVisaClick={handleVisaClick}
+            visaRequirement={visaRequirement}
           />
 
           <VisaDetails

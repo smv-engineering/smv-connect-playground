@@ -34,6 +34,7 @@ const useVisaProcessing = () => {
   };
 
   const handleVisaClick = (visaId: string) => {
+    if (visaId === visaRequirement?._id) return;
     fetchVisaRequirement(visaId);
   };
 
