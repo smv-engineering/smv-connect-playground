@@ -8,10 +8,11 @@ import {
   SettingOutlined,
   LoginOutlined,
 } from "@ant-design/icons";
-import { JSX } from "react";
-import { IPlaygroundConfig } from "./types";
+import {JSX} from "react";
+import {IPlaygroundConfig} from "./types";
 import HomePage from "./pages/HomePage";
 import ListOrders from "./pages/PlayGround/playgrounds/ListOrders";
+import VisaProcessing from "./pages/PlayGround/playgrounds/VisaProcessing";
 
 export const PLAYGROUNDS: IPlaygroundConfig[] = [
   {
@@ -30,8 +31,15 @@ export const PLAYGROUNDS: IPlaygroundConfig[] = [
     tags: ["CREATE_ORDER", "UPLOAD_BULK_DOCS"],
     component: <div>Component for List Orders</div>,
   },
+  {
+    name: "Visa Processing",
+    id: "visa-processing",
+    description: "Complete Visa Processing flow.",
+    photo: "src/assets/visa-processing.png",
+    tags: ["COUNTRY", "VISA_TYPE", "VISA_REQUIREMENTS"],
+    component: <VisaProcessing />,
+  },
 ];
-
 
 type TRoutes = {
   key: string;
@@ -39,33 +47,34 @@ type TRoutes = {
   path: string;
   icon: JSX.Element;
   page: JSX.Element;
-}
+};
 export const ROUTES: TRoutes[] = [
-  { 
+  {
     key: "home",
     label: "Home",
     path: "/",
     icon: <HomeOutlined />,
-    page: <HomePage />
+    page: <HomePage />,
   },
-  { 
+  {
     key: "playgrounds",
     label: "Playgrounds",
     path: "/playgrounds",
     icon: <AppstoreOutlined />,
-    page: <Playgrounds /> 
+    page: <Playgrounds />,
   },
-  { 
+  {
     key: "auth",
     label: "Authentication",
     path: "/auth",
     icon: <SettingOutlined />,
-    page: <AuthPage /> 
+    page: <AuthPage />,
   },
-  { 
+  {
     key: "playground",
     label: "Current Playground",
     path: "/playground",
     icon: <LoginOutlined />,
-    page: <Playground /> },
+    page: <Playground />,
+  },
 ];
