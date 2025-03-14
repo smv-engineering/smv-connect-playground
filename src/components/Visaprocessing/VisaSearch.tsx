@@ -10,7 +10,7 @@ export const VisaSearch = ({
   countries,
   handleCountryChange,
 }: VisaSearchProps) => (
-  <div>
+  <div className="w-md">
     <p>Please Select a Country</p>
     <Select
       showSearch

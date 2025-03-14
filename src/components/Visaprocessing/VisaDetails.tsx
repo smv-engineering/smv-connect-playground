@@ -30,7 +30,7 @@ export const VisaDetails = ({
 
   if (!reqData)
     return (
-      <div className="w-2/3 max-h-100 p-6 flex items-center justify-center">
+      <div className="w-2/3 max-h-[100vh] p-6 flex items-center justify-center">
         <div className="bg-gray-50 rounded-lg text-center border-2 border-gray-300 p-6 flex items-center justify-center">
           <p className="text-gray-500 text-lg">
             Select a visa type to see details
@@ -40,13 +40,13 @@ export const VisaDetails = ({
     );
 
   return (
-    <div className="w-2/3 max-h-100 p-6">
+    <div className="w-2/3 max-h-[100vh] p-6">
       {loading ? (
-        <div className="flex justify-center items-center h-[100%]">
+        <div className="flex justify-center items-center h-full">
           <Spin size="large" />
         </div>
       ) : (
-        <Card className="rounded-lg h-[100%] overflow-y-auto">
+        <Card className=" h-full overflow-y-auto">
           <div className="mb-4">
             <p className="text-2xl font-bold text-blue-600">
               {reqData.visa_type}
@@ -79,7 +79,6 @@ export const VisaDetails = ({
               })}
             </ul>
           </div>
-
           {reqData?.visa_info && reqData.visa_info.length > 0 && (
             <div className="mt-6">
               <p className="text-lg font-semibold text-gray-700 mb-3 border-b pb-1">
@@ -88,11 +87,11 @@ export const VisaDetails = ({
 
               {reqData.visa_info.map((visaInfoItem, infoIndex) => (
                 <div key={infoIndex} className="mb-6">
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="w-6 h-6 rounded-full bg-blue-700 text-white flex items-center justify-center text-sm font-semibold">
-                      {infoIndex + 1}
+                  <div className="flex items-center gap-1 mb-3">
+                    <div className="text-gray-500 flex items-center justify-center text-sm font-bold">
+                      {infoIndex + 1}.
                     </div>
-                    <p className="font-semibold text-lg">
+                    <p className="font-semibold text-sm text-gray-500">
                       {visaInfoItem.title}
                     </p>
                   </div>

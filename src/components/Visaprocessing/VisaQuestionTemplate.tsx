@@ -1,5 +1,5 @@
 import { Question } from "../../utils/interfaces";
-
+import { InfoCircleOutlined } from "@ant-design/icons";
 interface QuestionTemplateProps {
   question: Question;
   qIndex: number;
@@ -14,11 +14,20 @@ export const QuestionTemplate = ({
   return (
     <div
       key={qIndex}
-      className="border rounded-lg p-2 cursor-pointer"
+      className="border rounded-lg p-2 cursor-pointer 
+      transition duration-300 ease-in-out
+      break-words
+      w-[30%]
+    border-gray-200
+    hover:bg-gray-100
+      flex
+      flex-col
+      gap-3
+  "
       onClick={() => showModal(question)}
     >
-      <p className="font-medium text-blue-600">{question?.short_description}</p>
-      <p className="text-gray-500 text-xs mt-1">Click to view examples</p>
+      <InfoCircleOutlined className="text-3xl" />
+      <p className="font-medium text-black">{question?.short_description}</p>
     </div>
   );
 };

@@ -45,18 +45,31 @@ const VisaProcessing = () => {
         handleCountryChange={handleCountryChange}
       />
       {selectedCountry && (
-        <div className="flex flex-row gap-4">
-          <VisaList
-            countryLoading={visaTypesLoading}
-            selectedCountryDetails={visaTypes}
-            handleVisaClick={handleVisaClick}
-            visaRequirement={visaRequirement}
-          />
+        <div className="flex flex-col overflow-y-auto max-h-[100vh] border border-gray-200 rounded-lg p-6 mt-3">
+          <div>
+            <p className="text-2xl font-bold text-gray-700 border-b pb-2 border-gray-200">
+              {selectedCountry.name}
+            </p>
+          </div>
+          <div
+            className="
+            flex gap-4
+            overflow-y-auto
+            max-h-[100vh]
+          "
+          >
+            <VisaList
+              countryLoading={visaTypesLoading}
+              selectedCountryDetails={visaTypes}
+              handleVisaClick={handleVisaClick}
+              visaRequirement={visaRequirement}
+            />
 
-          <VisaDetails
-            loading={visaReqLoading}
-            selectedVisaRequirementDetails={visaRequirement}
-          />
+            <VisaDetails
+              loading={visaReqLoading}
+              selectedVisaRequirementDetails={visaRequirement}
+            />
+          </div>
         </div>
       )}
     </div>

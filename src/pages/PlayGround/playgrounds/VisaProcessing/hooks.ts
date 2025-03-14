@@ -23,11 +23,14 @@ const useVisaProcessing = () => {
     loading: visaReqLoading,
     visaRequirement,
     fetchVisaRequirement,
+    setVisaRequirement,
   } = useVisaRequirement();
 
   const [selectedCountry, setSelectedCountry] = useState<Country | null>(null);
 
   const handleCountryChange = (countryId: string) => {
+    setSelectedCountry(null);
+    setVisaRequirement(null);
     const country = countries.find((c) => c._id === countryId) || null;
     setSelectedCountry(country);
     fetchVisaTypes(country as Country);

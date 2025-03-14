@@ -29,6 +29,6 @@ const useVisaRequirement = () => {
     [authData]
   );
 
-  return { loading, visaRequirement, fetchVisaRequirement };
+  return { loading, visaRequirement, setVisaRequirement, fetchVisaRequirement };
 };
 export default useVisaRequirement;
