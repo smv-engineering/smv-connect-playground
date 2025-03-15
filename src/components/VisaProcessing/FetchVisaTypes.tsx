@@ -93,11 +93,17 @@ const VisaSelection: React.FC<VisaSelectionProps> = React.memo(
 
     return (
       <div className="max-h-[500px] overflow-x-hidden">
-        <Divider orientation="left">All Available Visas</Divider>
+        <Divider
+          orientation="left"
+          className="border-s-4 bg-gray-300/50 rounded-lg"
+        >
+          <span className="font-bold">All Available Visa</span>
+        </Divider>
 
         {/* This is where we will display the tabs for each visa type. */}
         {Object.keys(groupedVisaTypes).length > 0 ? (
           <Tabs
+            className="font-bold"
             defaultActiveKey={Object.keys(groupedVisaTypes)[0]}
             items={generatePurposeTabs()}
             type="card"
