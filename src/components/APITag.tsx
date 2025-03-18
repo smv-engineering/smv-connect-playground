@@ -6,6 +6,9 @@ const tagColors: Record<API_NAME, string> = {
   CREATE_ORDER: "bg-green-500 text-white",
   UPLOAD_BULK_DOCS: "bg-yellow-500 text-black",
   SEARCH_ORDERS: "bg-purple-500 text-white",
+  COUNTRIES: "bg-red-500 text-white",
+  VISA_TYPES: "bg-indigo-500 text-white",
+  VISA_TYPES_REQUIREMENTS: "bg-pink-500 text-white",
 };
 
 const tagName: Record<API_NAME, string> = {
@@ -13,8 +16,10 @@ const tagName: Record<API_NAME, string> = {
   CREATE_ORDER: "Create Order",
   UPLOAD_BULK_DOCS: "Upload Bulk Docs",
   SEARCH_ORDERS: "Search Orders",
+  COUNTRIES: "Countries",
+  VISA_TYPES: "Visa Types",
+  VISA_TYPES_REQUIREMENTS: "Visa Types Requirements",
 };
-
 
 interface PlaygroundTagProps {
   tag: API_NAME;
@@ -22,7 +27,8 @@ interface PlaygroundTagProps {
 
 const APITag: React.FC<PlaygroundTagProps> = ({ tag }) => {
   return (
-    <span className={`px-3 py-1 rounded-lg text-sm font-medium ${tagColors[tag]}`}
+    <span
+      className={`px-3 py-1 rounded-lg text-sm font-medium ${tagColors[tag]}`}
     >
       {tagName[tag]}
     </span>
