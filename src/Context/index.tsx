@@ -53,7 +53,6 @@ export const AuthWrapper = ({children}: {children: React.ReactNode}) => {
 
         return updatedAuthData;
       });
-      localStorage.setItem("authData", JSON.stringify(authData));
     } catch (error) {
       console.error(error);
     }

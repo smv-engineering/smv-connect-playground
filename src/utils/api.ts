@@ -1,6 +1,7 @@
-import axios, {AxiosRequestConfig} from "axios";
+import axios, {AxiosRequestConfig, AxiosResponse} from "axios";
 import {TAuthData} from "../Context";
 import {PaginationData, SymbolData} from "../types";
+import {globalApiInstance} from "./axiosInstance";
 
 export const generateAuthToken = async (
   authData: TAuthData
@@ -22,98 +23,62 @@ export const searchOrders = async (
   authData: TAuthData,
   data: PaginationData
 ): Promise<unknown> => {
-  const {server, token} = authData;
   const {pageNo, pageSize} = data;
-  const request: AxiosRequestConfig = {
-    url: `${server}/api/v1/orders/search?page_no=${pageNo}&page_size=${pageSize}`,
-    method: "GET",
-    headers: {
-      Authorization: token,
-    },
-  };
 
-  const response = await axios.request(request);
-  return response.data;
+  try {
+    const response: AxiosResponse = await globalApiInstance.get(
+      `orders/search?page_no=${pageNo}&page_size=${pageSize}`
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching countries:", error);
+  }
 };
 
 export const getAllCountries = async (
-  authData: TAuthData,
   data: PaginationData
 ): Promise<unknown> => {
-  const {server, token} = authData;
   const {pageNo, pageSize} = data;
-
-  const requestConfig: AxiosRequestConfig = {
-    url: `${server}/api/v1/countries`,
-    method: "GET",
-    headers: {
-      Authorization: token,
-    },
-    params: {
-      page_no: pageNo,
-      page_size: pageSize,
-    },
-  };
-
   try {
-    const response = await axios.request(requestConfig);
+    const response: AxiosResponse = await globalApiInstance.get(
+      `/countries?page_no=${pageNo}&page_size=${pageSize}`
+    );
     console.log("what is response", response);
     return response.data;
   } catch (error) {
     console.error("Error fetching countries:", error);
-    throw error;
+    return null;
   }
 };
 
 export const getVisaTypeByCountry = async (
-  authData: TAuthData,
   data: SymbolData
 ): Promise<unknown> => {
-  const {server, token} = authData;
   const {symbol} = data;
-
-  const requestConfig: AxiosRequestConfig = {
-    url: `${server}/api/v1/visa_types`,
-    method: "GET",
-    headers: {
-      Authorization: token,
-    },
-    params: {
-      symbol,
-    },
-  };
-
   try {
-    const response = await axios.request(requestConfig);
+    const response = await globalApiInstance.get(
+      `/visa_types?symbol=${symbol}`
+    );
+    console.log("what is response.data???", response.data);
     return response.data;
   } catch (error) {
     console.error("Error fetching country details:", error);
-    throw error;
+    return null;
   }
 };
 
 export const getVisaRequirements = async (
-  authData: TAuthData,
   visa_type_id: string
 ): Promise<unknown> => {
-  const {server, token} = authData;
-
-  const requestConfig: AxiosRequestConfig = {
-    url: `${server}/api/v1/visa_types/requirements`,
-    method: "GET",
-    headers: {
-      Authorization: token,
-    },
-    params: {
-      visa_type_id, // ✅ Directly using the parameter
-    },
-  };
-
+  console.log("what is visa type id?", visa_type_id);
   try {
-    const response = await axios.request(requestConfig);
+    const response = await globalApiInstance(
+      `/visa_types/requirements?visa_type_id=${visa_type_id}`
+    );
+    console.log("what is response.data getVisaRequirements???", response.data);
     return response.data;
   } catch (error) {
     console.error("Error fetching visa requirements:", error);
-    throw error;
+    return null;
   }
 };

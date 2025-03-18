@@ -21,12 +21,7 @@ interface DetailsCardsProps {
 
 const DetailsCards: React.FC<DetailsCardsProps> = ({visaRequirements}) => {
   return (
-    <Card
-      className="visa-header-card rounded-xl shadow-md border-2 border-gray-200 overflow-hidden"
-      style={{
-        background: "linear-gradient(to right bottom, #ffffff, #f9fbff)",
-      }}
-    >
+    <Card className="visa-header-card rounded-xl shadow-md border-2 border-gray-200 overflow-hidden bg-gradient-to-br from-white to-[#f9fbff]">
       <Row gutter={[24, 24]}>
         <Col xs={24}>
           <div className="mb-6">
@@ -58,11 +53,7 @@ const DetailsCards: React.FC<DetailsCardsProps> = ({visaRequirements}) => {
             <Col span={12}>
               <Card
                 size="small"
-                className="rounded-lg border border-blue-100 shadow-sm transition-all duration-300 hover:shadow-md hover:border-blue-300"
-                style={{
-                  background:
-                    "linear-gradient(135deg, #e6f7ff 0%, #e6f7ff 80%, #bae7ff 100%)",
-                }}
+                className="rounded-lg border border-blue-100 shadow-sm transition-all duration-300 hover:shadow-md hover:border-blue-300 bg-gradient-to-r from-[#e6f7ff] via-[#e6f7ff] to-[#bae7ff]"
               >
                 <Paragraph className="flex items-center gap-2 mb-3">
                   <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
@@ -89,11 +80,7 @@ const DetailsCards: React.FC<DetailsCardsProps> = ({visaRequirements}) => {
             <Col span={12}>
               <Card
                 size="small"
-                className="rounded-lg border border-green-100 shadow-sm transition-all duration-300 hover:shadow-md hover:border-green-300"
-                style={{
-                  background:
-                    "linear-gradient(135deg, #f6ffed 0%, #f6ffed 80%, #d9f7be 100%)",
-                }}
+                className="rounded-lg border border-green-100 shadow-sm transition-all duration-300 hover:shadow-md hover:border-green-300 bg-gradient-to-br from-[#f6ffed] via-[#f6ffed] to-[#d9f7be]"
               >
                 <Paragraph className="flex items-center gap-2 mb-3">
                   <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
@@ -130,15 +117,7 @@ const DetailsCards: React.FC<DetailsCardsProps> = ({visaRequirements}) => {
                 <span>Visa Pricing</span>
               </div>
             }
-            className="font-semibold rounded-lg border-purple-100 shadow-sm"
-            style={{
-              background:
-                "linear-gradient(135deg, #f9f0ff 0%, #f9f0ff 90%, #efdbff 100%)",
-            }}
-            headStyle={{
-              borderBottom: "1px solid #efdbff",
-              background: "transparent",
-            }}
+            className="font-semibold rounded-lg border border-purple-100 shadow-sm bg-gradient-to-br from-[#f9f0ff] via-[#f9f0ff] to-[#efdbff]"
           >
             <Descriptions column={1} className="pricing-descriptions">
               <Descriptions.Item
@@ -215,7 +194,7 @@ const DetailsCards: React.FC<DetailsCardsProps> = ({visaRequirements}) => {
                 </span>
               </Descriptions.Item>
 
-              <Divider style={{margin: "12px 0"}} />
+              <Divider className="my-3" />
 
               <Descriptions.Item
                 label={

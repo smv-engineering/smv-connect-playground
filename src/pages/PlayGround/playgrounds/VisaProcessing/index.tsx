@@ -1,3 +1,4 @@
+import React from "react";
 import {useEffect, useState} from "react";
 import {TAuthData} from "../../../../Context";
 import CountrySelect from "../../../../components/VisaProcessing/SelectCountry";
@@ -89,7 +90,6 @@ const VisaProcessing = () => {
                 </span>
               </Text>
               <CountrySelect
-                authData={authData}
                 value={selectedCountry}
                 onChange={handleCountryChange}
                 placeholder="Please select a country"
@@ -98,11 +98,7 @@ const VisaProcessing = () => {
           </div>
 
           <div className="flex relative">
-            <Divider
-              type="vertical"
-              className="h-full absolute left-0"
-              style={{height: "100%"}}
-            />
+            <Divider type="vertical" className="h-full absolute left-0" />
 
             <div className="flex-1 p-6 pl-8">
               {loading ? (
@@ -113,7 +109,6 @@ const VisaProcessing = () => {
                 <div>
                   <VisaSelection
                     onChange={handleVisaTypeChange}
-                    authData={authData}
                     countrySymbol={selectedCountry}
                   />
                 </div>
@@ -145,7 +140,7 @@ const VisaProcessing = () => {
         width={800}
       >
         {selectedVisaType && authData && (
-          <VisaRequirementsPage authData={authData} data={selectedVisaType} />
+          <VisaRequirementsPage data={selectedVisaType} />
         )}
       </Modal>
     </>

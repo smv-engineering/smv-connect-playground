@@ -2,13 +2,11 @@ import React from "react";
 import {Select, Spin} from "antd";
 import {useCountries} from "../../hooks/useCountries";
 import {Country} from "../../types";
-import {TAuthData} from "../../Context";
 import {GlobalOutlined} from "@ant-design/icons";
 
 const {Option} = Select;
 
 interface CountrySelectProps {
-  authData: TAuthData;
   value?: string;
   onChange?: (value: string) => void;
   placeholder?: string;
@@ -16,13 +14,12 @@ interface CountrySelectProps {
 }
 
 const CountrySelect: React.FC<CountrySelectProps> = ({
-  authData,
   value,
   onChange,
   placeholder = "Select a country",
   disabled = false,
 }) => {
-  const {countries, loading} = useCountries(authData);
+  const {countries, loading} = useCountries();
 
   return (
     <Select

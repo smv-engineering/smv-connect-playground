@@ -1,12 +1,8 @@
 import {useState, useEffect} from "react";
 import {getVisaRequirements} from "../utils/api";
-import {TAuthData} from "../Context";
 import {VisaRequirement, VisaRequirementResponse, VisaTypeData} from "../types";
 
-export const useVisaRequirements = (
-  authData: TAuthData,
-  data: VisaTypeData
-) => {
+export const useVisaRequirements = (data: VisaTypeData) => {
   const [visaRequirements, setVisaRequirements] =
     useState<VisaRequirement | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
@@ -17,7 +13,6 @@ export const useVisaRequirements = (
       setLoading(true);
       try {
         const response = (await getVisaRequirements(
-          authData,
           data._id
         )) as VisaRequirementResponse;
 
@@ -41,7 +36,7 @@ export const useVisaRequirements = (
     if (_id) {
       fetchVisaRequirements();
     }
-  }, [authData, _id]);
+  }, [_id, data._id]);
 
   return {visaRequirements, loading, error};
 };

@@ -1,3 +1,4 @@
+import React from "react";
 import {Layout, Menu} from "antd";
 import {Link, useLocation} from "react-router-dom";
 import {ROUTES} from "../constants";
@@ -19,15 +20,6 @@ const Sidebar: React.FC<SidebarProps> = ({collapsed, setCollapsed}) => {
       collapsed={collapsed}
       onCollapse={setCollapsed}
       className="shadow-md"
-      style={{
-        overflow: "auto",
-        height: "100vh",
-        position: "fixed",
-        left: 0,
-        top: 0,
-        bottom: 0,
-        zIndex: 10,
-      }}
     >
       <div className="h-16 flex items-center justify-center text-xl font-bold text-white uppercase tracking-wide">
         {collapsed ? "SMV" : "SMV Connect"}

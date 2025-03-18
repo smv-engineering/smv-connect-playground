@@ -1,3 +1,4 @@
+import React from "react";
 import AuthPage from "./pages/Auth";
 import Playgrounds from "./pages/PlayGrounds";
 import Playground from "./pages/PlayGround";

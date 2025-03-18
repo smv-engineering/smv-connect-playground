@@ -1,3 +1,4 @@
+import React from "react";
 import {Card, Tag, Tooltip, Progress} from "antd";
 import {
   InfoCircleOutlined,
@@ -94,12 +95,7 @@ const VisaCard: React.FC<VisaCardProps> = ({
     >
       <div className="mb-4">
         <div className="grid grid-cols-2 gap-4">
-          <div
-            className="bg-blue-50 rounded-lg p-3 flex items-center transform transition-all duration-300 hover:scale-102 hover:shadow-md"
-            style={{
-              background: `linear-gradient(135deg, #e6f7ff 0%, #e6f7ff 80%, #bae7ff 100%)`,
-            }}
-          >
+          <div className="rounded-lg p-3 flex items-center transform transition-all duration-300 hover:scale-102 hover:shadow-md bg-gradient-to-br from-[#e6f7ff] via-[#e6f7ff] to-[#bae7ff]">
             <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-2">
               <CalendarOutlined className="text-blue-600 text-lg" />
             </div>
@@ -115,12 +111,7 @@ const VisaCard: React.FC<VisaCardProps> = ({
             </div>
           </div>
 
-          <div
-            className="bg-green-50 rounded-lg p-3 flex items-center transform transition-all duration-300 hover:scale-102 hover:shadow-md"
-            style={{
-              background: `linear-gradient(135deg, #f6ffed 0%, #f6ffed 80%, #d9f7be 100%)`,
-            }}
-          >
+          <div className="rounded-lg p-3 flex items-center transform transition-all duration-300 hover:scale-105 hover:shadow-md bg-gradient-to-br from-[#f6ffed] via-[#f6ffed] to-[#d9f7be]">
             <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center mr-2">
               <ClockCircleOutlined className="text-green-600 text-lg" />
             </div>
@@ -134,12 +125,7 @@ const VisaCard: React.FC<VisaCardProps> = ({
             </div>
           </div>
 
-          <div
-            className="bg-purple-50 rounded-lg p-3 flex items-center transform transition-all duration-300 hover:scale-102 hover:shadow-md"
-            style={{
-              background: `linear-gradient(135deg, #f9f0ff 0%, #f9f0ff 80%, #efdbff 100%)`,
-            }}
-          >
+          <div className="rounded-lg p-3 flex items-center transform transition-all duration-300 hover:scale-105 hover:shadow-md bg-gradient-to-br from-[#f9f0ff] via-[#f9f0ff] to-[#efdbff]">
             <div className="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center mr-2">
               <InfoCircleOutlined className="text-purple-600 text-lg" />
             </div>
@@ -153,12 +139,7 @@ const VisaCard: React.FC<VisaCardProps> = ({
             </div>
           </div>
 
-          <div
-            className="bg-red-50 rounded-lg p-3 flex items-center transform transition-all duration-300 hover:scale-102 hover:shadow-md"
-            style={{
-              background: `linear-gradient(135deg, #fff2f0 0%, #fff2f0 80%, #ffccc7 100%)`,
-            }}
-          >
+          <div className="rounded-lg p-3 flex items-center transform transition-all duration-300 hover:scale-105 hover:shadow-md bg-gradient-to-br from-[#fff2f0] via-[#fff2f0] to-[#ffccc7]">
             <div className="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center mr-2">
               <DollarOutlined className="text-red-600 text-lg" />
             </div>

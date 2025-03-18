@@ -19,7 +19,6 @@ import {
   InfoCircleOutlined,
 } from "@ant-design/icons";
 import {useVisaRequirements} from "../../hooks/useVisaRequirements";
-import {TAuthData} from "../../Context";
 import {VisaTypeData} from "../../types";
 import VisaDetailsCard from "./VisaDetailsCards";
 
@@ -28,15 +27,11 @@ const {Panel} = Collapse;
 const {Step} = Steps;
 
 interface VisaRequirementsPageProps {
-  authData: TAuthData;
   data: VisaTypeData;
 }
 
-const VisaRequirementsPage: React.FC<VisaRequirementsPageProps> = ({
-  authData,
-  data,
-}) => {
-  const {visaRequirements} = useVisaRequirements(authData, data);
+const VisaRequirementsPage: React.FC<VisaRequirementsPageProps> = ({data}) => {
+  const {visaRequirements} = useVisaRequirements(data);
   const [activeImageModal, setActiveImageModal] = useState<{
     visible: boolean;
     imageUrl: string;
@@ -123,8 +118,7 @@ const VisaRequirementsPage: React.FC<VisaRequirementsPageProps> = ({
                                   <p key={index}>{line}</p>
                                 ))}
                               showIcon
-                              style={{marginBottom: 16}}
-                              className="font-semibold italic"
+                              className="font-semibold italic mb-4"
                             />
                           )}
 
@@ -138,7 +132,7 @@ const VisaRequirementsPage: React.FC<VisaRequirementsPageProps> = ({
                                 >
                                   <Card
                                     title={
-                                      <span style={{color: "#52c41a"}}>
+                                      <span className="text-[#52c41a]">
                                         <CheckCircleOutlined /> Correct Way
                                       </span>
                                     }
@@ -164,7 +158,7 @@ const VisaRequirementsPage: React.FC<VisaRequirementsPageProps> = ({
                                 <Col xs={24} md={12}>
                                   <Card
                                     title={
-                                      <span style={{color: "#ff4d4f"}}>
+                                      <span className="text-[#ff4d4f]">
                                         <CloseCircleOutlined /> Wrong Way
                                       </span>
                                     }
@@ -228,7 +222,7 @@ const VisaRequirementsPage: React.FC<VisaRequirementsPageProps> = ({
                 ? "Correct example"
                 : "Incorrect example"
             }
-            style={{maxWidth: "100%"}}
+            className="max-w-full"
           />
         </div>
       </Modal>

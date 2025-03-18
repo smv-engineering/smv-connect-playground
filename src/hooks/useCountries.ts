@@ -1,8 +1,6 @@
-// src/hooks/useCountries.ts
 import {useState, useEffect} from "react";
 import {CountriesResponse, Country} from "../types";
 import {getAllCountries} from "../utils/api";
-import {TAuthData} from "../Context";
 
 interface UseCountriesReturn {
   countries: Country[];
@@ -11,7 +9,6 @@ interface UseCountriesReturn {
 }
 
 export const useCountries = (
-  authData: TAuthData,
   pageNo: number = 1,
   pageSize: number = 100
 ): UseCountriesReturn => {
@@ -23,7 +20,7 @@ export const useCountries = (
     const fetchCountries = async () => {
       setLoading(true);
       try {
-        const response = (await getAllCountries(authData, {
+        const response = (await getAllCountries({
           pageNo,
           pageSize,
         })) as CountriesResponse;
@@ -43,7 +40,7 @@ export const useCountries = (
     };
 
     fetchCountries();
-  }, [authData, pageNo, pageSize]);
+  }, [pageNo, pageSize]);
 
   return {countries, loading, error};
 };

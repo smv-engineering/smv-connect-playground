@@ -2,22 +2,20 @@ import React, {useCallback, useMemo, useState} from "react";
 import {Tabs, Spin, Divider} from "antd";
 import type {TabsProps} from "antd";
 import {useVisaTypes} from "../../hooks/useVisaTypes";
-import {TAuthData} from "../../Context";
 import {VisaType, VisaTypeData} from "../../types";
 import {calculateTotalPrice} from "../../utils/total-price-util";
 import VisaCard from "./VisaCard";
 
 interface VisaSelectionProps {
-  authData: TAuthData;
   countrySymbol: string;
   onChange: (value: VisaTypeData) => void;
 }
 
 const VisaSelection: React.FC<VisaSelectionProps> = React.memo(
-  ({countrySymbol, authData, onChange}) => {
+  ({countrySymbol, onChange}) => {
     const [selectedVisa, setSelectedVisa] = useState<string>("");
 
-    const {visaTypes, loading} = useVisaTypes(authData, countrySymbol);
+    const {visaTypes, loading} = useVisaTypes(countrySymbol);
 
     //This function will help us group visas by their purpose to display them in form of tabs later.
     const groupedVisaTypes = useMemo(() => {
