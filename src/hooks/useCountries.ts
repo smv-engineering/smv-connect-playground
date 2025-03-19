@@ -1,6 +1,7 @@
-import {useState, useEffect} from "react";
-import {CountriesResponse, Country} from "../types";
-import {getAllCountries} from "../utils/api";
+import { useState, useEffect } from "react";
+import { CountriesResponse, Country } from "../types";
+import { getAllCountries } from "../utils/api";
+import { useAuthContext } from "../Context";
 
 interface UseCountriesReturn {
   countries: Country[];
@@ -15,12 +16,13 @@ export const useCountries = (
   const [countries, setCountries] = useState<Country[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error | null>(null);
+  const { authData } = useAuthContext();
 
   useEffect(() => {
     const fetchCountries = async () => {
       setLoading(true);
       try {
-        const response = (await getAllCountries({
+        const response = (await getAllCountries(authData, {
           pageNo,
           pageSize,
         })) as CountriesResponse;
@@ -40,7 +42,7 @@ export const useCountries = (
     };
 
     fetchCountries();
-  }, [pageNo, pageSize]);
+  }, [authData, pageNo, pageSize]);
 
-  return {countries, loading, error};
+  return { countries, loading, error };
 };

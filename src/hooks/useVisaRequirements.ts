@@ -1,18 +1,25 @@
-import {useState, useEffect} from "react";
-import {getVisaRequirements} from "../utils/api";
-import {VisaRequirement, VisaRequirementResponse, VisaTypeData} from "../types";
+import { useState, useEffect } from "react";
+import { getVisaRequirements } from "../utils/api";
+import {
+  VisaRequirement,
+  VisaRequirementResponse,
+  VisaTypeData,
+} from "../types";
+import { useAuthContext } from "../Context";
 
 export const useVisaRequirements = (data: VisaTypeData) => {
   const [visaRequirements, setVisaRequirements] =
     useState<VisaRequirement | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
-  const {_id} = data;
+  const { authData } = useAuthContext();
+  const { _id } = data;
   useEffect(() => {
     const fetchVisaRequirements = async () => {
       setLoading(true);
       try {
         const response = (await getVisaRequirements(
+          authData,
           data._id
         )) as VisaRequirementResponse;
 
@@ -36,7 +43,7 @@ export const useVisaRequirements = (data: VisaTypeData) => {
     if (_id) {
       fetchVisaRequirements();
     }
-  }, [_id, data._id]);
+  }, [_id, data._id, authData]);
 
-  return {visaRequirements, loading, error};
+  return { visaRequirements, loading, error };
 };

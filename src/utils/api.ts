@@ -1,7 +1,15 @@
-import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 import { TAuthData } from "../Context";
 import { PaginationData, SymbolData } from "../types";
-import { globalApiInstance } from "./axiosInstance";
+
+function getAxiosInstance(authData: TAuthData): AxiosInstance {
+  return axios.create({
+    baseURL: `${authData.server}/api/v1`,
+    headers: {
+      Authorization: authData.token,
+    },
+  });
+}
 
 export const generateAuthToken = async (
   authData: TAuthData
@@ -20,13 +28,14 @@ export const generateAuthToken = async (
 };
 
 export const searchOrders = async (
-  _authData: TAuthData,
+  authData: TAuthData,
   data: PaginationData
 ): Promise<unknown> => {
+  const axiosInstance = getAxiosInstance(authData);
   const { pageNo, pageSize } = data;
 
   try {
-    const response: AxiosResponse = await globalApiInstance.get(
+    const response: AxiosResponse = await axiosInstance.get(
       `orders/search?page_no=${pageNo}&page_size=${pageSize}`
     );
     return response.data;
@@ -36,14 +45,15 @@ export const searchOrders = async (
 };
 
 export const getAllCountries = async (
+  authData: TAuthData,
   data: PaginationData
 ): Promise<unknown> => {
+  const axiosInstance = getAxiosInstance(authData);
   const { pageNo, pageSize } = data;
   try {
-    const response: AxiosResponse = await globalApiInstance.get(
+    const response = await axiosInstance.get(
       `/countries?page_no=${pageNo}&page_size=${pageSize}`
     );
-    console.log("what is response", response);
     return response.data;
   } catch (error) {
     console.error("Error fetching countries:", error);
@@ -52,14 +62,13 @@ export const getAllCountries = async (
 };
 
 export const getVisaTypeByCountry = async (
+  authData: TAuthData,
   data: SymbolData
 ): Promise<unknown> => {
+  const axiosInstance = getAxiosInstance(authData);
   const { symbol } = data;
   try {
-    const response = await globalApiInstance.get(
-      `/visa_types?symbol=${symbol}`
-    );
-    console.log("what is response.data???", response.data);
+    const response = await axiosInstance.get(`/visa_types?symbol=${symbol}`);
     return response.data;
   } catch (error) {
     console.error("Error fetching country details:", error);
@@ -68,14 +77,14 @@ export const getVisaTypeByCountry = async (
 };
 
 export const getVisaRequirements = async (
+  authData: TAuthData,
   visa_type_id: string
 ): Promise<unknown> => {
-  console.log("what is visa type id?", visa_type_id);
+  const axiosInstance = getAxiosInstance(authData);
   try {
-    const response = await globalApiInstance(
+    const response = await axiosInstance.get(
       `/visa_types/requirements?visa_type_id=${visa_type_id}`
     );
-    console.log("what is response.data getVisaRequirements???", response.data);
     return response.data;
   } catch (error) {
     console.error("Error fetching visa requirements:", error);

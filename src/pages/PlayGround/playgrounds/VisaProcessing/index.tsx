@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {TAuthData} from "../../../../Context";
+import {useAuthContext} from "../../../../Context";
 import CountrySelect from "../../../../components/VisaProcessing/SelectCountry";
 import VisaSelection from "../../../../components/VisaProcessing/FetchVisaTypes";
 import {
@@ -23,17 +23,9 @@ const VisaProcessing = () => {
   );
 
   const [selectedVisaType, setSelectedVisaType] = useState<VisaTypeData>();
-  const [authData, setAuthData] = useState<TAuthData>();
   const [loading, setLoading] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
-
-  // Load auth data from local storage so that the user doesn't have to log in again when the page is refreshed
-  useEffect(() => {
-    const storedAuthData = localStorage.getItem("authData");
-    if (storedAuthData) {
-      setAuthData(JSON.parse(storedAuthData));
-    }
-  }, []);
+  const {authData} = useAuthContext();
 
   useEffect(() => {
     if (selectedVisaType) {

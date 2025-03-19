@@ -1,19 +1,21 @@
-import {useState, useEffect} from "react";
-import {getVisaTypeByCountry} from "../utils/api";
-import {VisaType} from "../types";
+import { useState, useEffect } from "react";
+import { getVisaTypeByCountry } from "../utils/api";
+import { VisaType } from "../types";
+import { useAuthContext } from "../Context";
 
 export const useVisaTypes = (countrySymbol: string) => {
   const [visaTypes, setVisaTypes] = useState<VisaType[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
+  const { authData } = useAuthContext();
 
   useEffect(() => {
     const fetchVisaTypes = async () => {
       setLoading(true);
       try {
-        const response = (await getVisaTypeByCountry({
+        const response = (await getVisaTypeByCountry(authData, {
           symbol: countrySymbol,
-        })) as {data: VisaType[]};
+        })) as { data: VisaType[] };
 
         if (response && response.data) {
           setVisaTypes(response.data);
@@ -30,7 +32,7 @@ export const useVisaTypes = (countrySymbol: string) => {
     };
 
     fetchVisaTypes();
-  }, [countrySymbol]);
+  }, [authData, countrySymbol]);
 
-  return {visaTypes, loading, error};
+  return { visaTypes, loading, error };
 };
