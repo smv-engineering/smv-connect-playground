@@ -119,3 +119,21 @@ export interface VisaRequirementResponse {
   success: boolean;
   data: VisaRequirement;
 }
+export interface Order {
+  _id: string;
+  order_id: string;
+  visa_type: string;
+  no_of_travelers: number;
+  travel_start_date: string;
+  travel_end_date: string;
+  status: string;
+  created_at: string;
+  updated_at: string;
+  expected_delivery_date: string;
+  invoice_details: null;
+  invoice_amount: null;
+  estimate_details: null;
+  estimate_amount: null;
+  last_activity_at: string;
+  pricing: Pricing;
+}

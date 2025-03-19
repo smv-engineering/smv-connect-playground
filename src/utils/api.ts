@@ -91,3 +91,22 @@ export const getVisaRequirements = async (
     return null;
   }
 };
+
+export const createOrder = async (
+  authData: TAuthData,
+  data: {
+    visa_type_id: string;
+    travel_start_date: string;
+    travel_end_date: string;
+    no_of_travelers: number;
+  }
+): Promise<unknown> => {
+  const axiosInstance = getAxiosInstance(authData);
+  try {
+    const response = await axiosInstance.post("/orders", data);
+    return response.data.data;
+  } catch (error) {
+    console.error("Error fetching visa requirements:", error);
+    return null;
+  }
+};

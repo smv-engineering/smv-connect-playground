@@ -33,9 +33,6 @@ const VisaProcessing = () => {
     }
   }, [selectedVisaType]);
 
-  // Check if user is authenticated
-  const isAuthenticated = authData && authData?.token?.length > 0;
-
   const handleCountryChange = (value: string) => {
     setLoading(true);
     setSelectedCountry(value);
@@ -49,22 +46,6 @@ const VisaProcessing = () => {
   const handleModalClose = () => {
     setIsModalVisible(false);
   };
-
-  // If user is not authenticated, show a message to login
-  if (!isAuthenticated) {
-    return (
-      <div>
-        <Text className="mt-4 block">
-          Seems like user is not logged in. Please login to continue.
-        </Text>
-        <Text className="mt-4 block">
-          <a href="/auth" className="text-blue-500 font-semibold underline">
-            Click here to login
-          </a>
-        </Text>
-      </div>
-    );
-  }
 
   return (
     <>

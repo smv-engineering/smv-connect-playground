@@ -3,6 +3,7 @@ import {Card} from "antd";
 import {IPlaygroundConfig} from "../../types";
 import {PLAYGROUNDS} from "../../constants";
 import APITag from "../../components/APITag";
+import { useAuthContext } from "../../Context";
 
 const Playground = () => {
   const [searchParams] = useSearchParams();
@@ -10,6 +11,7 @@ const Playground = () => {
   const playground: IPlaygroundConfig | undefined = PLAYGROUNDS.find(
     (pg) => pg.id === playgroundId
   );
+  const {isAuthenticated} = useAuthContext();
 
   if (!playground) {
     return (
@@ -31,7 +33,13 @@ const Playground = () => {
             <APITag key={tag} tag={tag} />
           ))}
         </div>
-        <div className="mt-6">{playground.component}</div>
+        {isAuthenticated() ? (
+          <div className="mt-6">{playground.component}</div>
+        ): 
+        (
+          <div>Please <a href="/auth" className="text-blue-500 underline hover:text-blue-700 transition-colors duration-300">login</a> to view the playground </div>
+        )}
+        
       </Card>
     </div>
   );

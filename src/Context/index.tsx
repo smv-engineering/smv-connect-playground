@@ -13,6 +13,7 @@ export type TAuthContext = {
   authData: TAuthData;
   setAuthData: (data: TAuthData) => void;
   generateAuthToken: (data: TAuthData) => Promise<void>;
+  isAuthenticated: () => boolean;
 };
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -57,9 +58,11 @@ export const AuthWrapper = ({children}: {children: React.ReactNode}) => {
     }
   };
 
+  const isAuthenticated = () => !!authData.token;
+
   return (
     <AuthContext.Provider
-      value={{authData, setAuthData, generateAuthToken: _generateAuthToken}}
+      value={{authData, setAuthData, generateAuthToken: _generateAuthToken, isAuthenticated}}
     >
       {children}
     </AuthContext.Provider>

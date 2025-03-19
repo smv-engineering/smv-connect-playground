@@ -13,6 +13,7 @@ import {IPlaygroundConfig} from "./types";
 import HomePage from "./pages/HomePage";
 import ListOrders from "./pages/PlayGround/playgrounds/ListOrders";
 import VisaProcessing from "./pages/PlayGround/playgrounds/VisaProcessing";
+import CreateOrder from "./pages/PlayGround/playgrounds/CreateOrder";
 
 export const PLAYGROUNDS: IPlaygroundConfig[] = [
   {
@@ -23,14 +24,14 @@ export const PLAYGROUNDS: IPlaygroundConfig[] = [
     tags: ["SEARCH_ORDERS"],
     component: <ListOrders />,
   },
-  // {
-  //   name: "Create Order",
-  //   id: "create-order",
-  //   description: "Create a new order using API.",
-  //   photo: "/assets/playgrounds/create-order.png",
-  //   tags: ["CREATE_ORDER", "UPLOAD_BULK_DOCS"],
-  //   component: <div>Component for List Orders</div>,
-  // },
+  {
+    name: "Create Order",
+    id: "create-order",
+    description: "Create a new order using API.",
+    photo: "/assets/playgrounds/create-order.png",
+    tags: ["CREATE_ORDER", "COUNTRY", "VISA_TYPE"],
+    component: <CreateOrder />,
+  },
   {
     name: "Visa Processing",
     id: "visa-processing",
