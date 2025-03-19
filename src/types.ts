@@ -2,10 +2,7 @@ export type API_NAME =
   | "GENERATE_TOKEN"
   | "CREATE_ORDER"
   | "UPLOAD_BULK_DOCS"
-  | "SEARCH_ORDERS"
-  | "COUNTRIES"
-  | "VISA_TYPES"
-  | "VISA_TYPES_REQUIREMENTS";
+  | "SEARCH_ORDERS";
 
 export interface IPlaygroundConfig {
   name: string;

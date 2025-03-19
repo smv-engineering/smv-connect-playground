@@ -12,7 +12,6 @@ import { JSX } from "react";
 import { IPlaygroundConfig } from "./types";
 import HomePage from "./pages/HomePage";
 import ListOrders from "./pages/PlayGround/playgrounds/ListOrders";
-import VisaProcesssing from "./pages/PlayGround/playgrounds/VisaProcessing";
 
 export const PLAYGROUNDS: IPlaygroundConfig[] = [
   {
@@ -31,15 +30,8 @@ export const PLAYGROUNDS: IPlaygroundConfig[] = [
     tags: ["CREATE_ORDER", "UPLOAD_BULK_DOCS"],
     component: <div>Component for List Orders</div>,
   },
-  {
-    name: "Visa Processing",
-    id: "visa-processing",
-    description: "Implement Visa Processing API Flow.",
-    photo: "/assets/playgrounds/visa-processing.png",
-    tags: ["COUNTRIES", "VISA_TYPES", "VISA_TYPES_REQUIREMENTS"],
-    component: <VisaProcesssing />,
-  },
 ];
+
 
 type TRoutes = {
   key: string;
@@ -47,34 +39,33 @@ type TRoutes = {
   path: string;
   icon: JSX.Element;
   page: JSX.Element;
-};
+}
 export const ROUTES: TRoutes[] = [
-  {
+  { 
     key: "home",
     label: "Home",
     path: "/",
     icon: <HomeOutlined />,
-    page: <HomePage />,
+    page: <HomePage />
   },
-  {
+  { 
     key: "playgrounds",
     label: "Playgrounds",
     path: "/playgrounds",
     icon: <AppstoreOutlined />,
-    page: <Playgrounds />,
+    page: <Playgrounds /> 
   },
-  {
+  { 
     key: "auth",
     label: "Authentication",
     path: "/auth",
     icon: <SettingOutlined />,
-    page: <AuthPage />,
+    page: <AuthPage /> 
   },
-  {
+  { 
     key: "playground",
     label: "Current Playground",
     path: "/playground",
     icon: <LoginOutlined />,
-    page: <Playground />,
-  },
+    page: <Playground /> },
 ];
