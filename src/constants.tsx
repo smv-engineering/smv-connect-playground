@@ -1,4 +1,3 @@
-import React from "react";
 import AuthPage from "./pages/Auth";
 import Playgrounds from "./pages/PlayGrounds";
 import Playground from "./pages/PlayGround";
@@ -24,14 +23,14 @@ export const PLAYGROUNDS: IPlaygroundConfig[] = [
     tags: ["SEARCH_ORDERS"],
     component: <ListOrders />,
   },
-  {
-    name: "Create Order",
-    id: "create-order",
-    description: "Create a new order using API.",
-    photo: "/assets/playgrounds/create-order.png",
-    tags: ["CREATE_ORDER", "UPLOAD_BULK_DOCS"],
-    component: <div>Component for List Orders</div>,
-  },
+  // {
+  //   name: "Create Order",
+  //   id: "create-order",
+  //   description: "Create a new order using API.",
+  //   photo: "/assets/playgrounds/create-order.png",
+  //   tags: ["CREATE_ORDER", "UPLOAD_BULK_DOCS"],
+  //   component: <div>Component for List Orders</div>,
+  // },
   {
     name: "Visa Processing",
     id: "visa-processing",

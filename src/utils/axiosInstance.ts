@@ -1,5 +1,5 @@
 import axios from "axios";
-import {TAuthData} from "../Context";
+import { TAuthData } from "../Context";
 
 const getAuthDataFromLocalStorage = () => {
   const authData = localStorage.getItem("authData");
@@ -9,10 +9,10 @@ const getAuthDataFromLocalStorage = () => {
 const authDataFromLocalStorage: TAuthData = getAuthDataFromLocalStorage();
 
 const config = {
-  baseURL: `${authDataFromLocalStorage.server}/api/v1`,
+  baseURL: `${authDataFromLocalStorage?.server}/api/v1`,
   headers: {
     "Content-Type": "application/json",
-    Authorization: authDataFromLocalStorage.token,
+    Authorization: authDataFromLocalStorage?.token,
   },
 };
 export const globalApiInstance = axios.create(config);
