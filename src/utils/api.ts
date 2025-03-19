@@ -1,12 +1,12 @@
-import axios, {AxiosRequestConfig, AxiosResponse} from "axios";
-import {TAuthData} from "../Context";
-import {PaginationData, SymbolData} from "../types";
-import {globalApiInstance} from "./axiosInstance";
+import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
+import { TAuthData } from "../Context";
+import { PaginationData, SymbolData } from "../types";
+import { globalApiInstance } from "./axiosInstance";
 
 export const generateAuthToken = async (
   authData: TAuthData
 ): Promise<string> => {
-  const {clientId, clientSecret, server} = authData;
+  const { clientId, clientSecret, server } = authData;
   const request: AxiosRequestConfig = {
     url: `${server}/api/v1/auth/generate-token`,
     method: "POST",
@@ -20,10 +20,10 @@ export const generateAuthToken = async (
 };
 
 export const searchOrders = async (
-  authData: TAuthData,
+  _authData: TAuthData,
   data: PaginationData
 ): Promise<unknown> => {
-  const {pageNo, pageSize} = data;
+  const { pageNo, pageSize } = data;
 
   try {
     const response: AxiosResponse = await globalApiInstance.get(
@@ -38,7 +38,7 @@ export const searchOrders = async (
 export const getAllCountries = async (
   data: PaginationData
 ): Promise<unknown> => {
-  const {pageNo, pageSize} = data;
+  const { pageNo, pageSize } = data;
   try {
     const response: AxiosResponse = await globalApiInstance.get(
       `/countries?page_no=${pageNo}&page_size=${pageSize}`
@@ -54,7 +54,7 @@ export const getAllCountries = async (
 export const getVisaTypeByCountry = async (
   data: SymbolData
 ): Promise<unknown> => {
-  const {symbol} = data;
+  const { symbol } = data;
   try {
     const response = await globalApiInstance.get(
       `/visa_types?symbol=${symbol}`

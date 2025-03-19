@@ -1,4 +1,3 @@
-import React from "react";
 import {useEffect, useState} from "react";
 import {TAuthData} from "../../../../Context";
 import CountrySelect from "../../../../components/VisaProcessing/SelectCountry";
