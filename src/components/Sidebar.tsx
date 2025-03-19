@@ -1,7 +1,7 @@
 import React from "react";
 import {Layout, Menu} from "antd";
-import {Link, useLocation} from "react-router-dom";
-import {ROUTES} from "../constants";
+import { Link, useLocation } from "react-router-dom";
+import { ROUTES } from "../constants";
 
 const {Sider} = Layout;
 
@@ -21,8 +21,8 @@ const Sidebar: React.FC<SidebarProps> = ({collapsed, setCollapsed}) => {
       onCollapse={setCollapsed}
       className="shadow-md"
     >
-      <div className="h-16 flex items-center justify-center text-xl font-bold text-white uppercase tracking-wide">
-        {collapsed ? "SMV" : "SMV Connect"}
+      <div className="h-16 flex items-center justify-center text-xl font-bold text-white tracking-wide">
+        {collapsed ? "SMV" : "SMV Konveyor"}
       </div>
       <Menu
         theme="dark"
