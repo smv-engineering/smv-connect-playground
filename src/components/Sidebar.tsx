@@ -13,6 +13,14 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({collapsed, setCollapsed}) => {
   const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const playgroundId = searchParams.get("id");
+
+  let selectedKey = ROUTES.find((route) => route.path === location.pathname)?.key || "home";
+
+  if (location.pathname === "/playground" && playgroundId) {
+    selectedKey = "playground";
+  }
 
   return (
     <Sider
@@ -27,10 +35,7 @@ const Sidebar: React.FC<SidebarProps> = ({collapsed, setCollapsed}) => {
       <Menu
         theme="dark"
         mode="inline"
-        selectedKeys={[
-          ROUTES.find((route) => route.path === location.pathname)?.key ||
-            "home",
-        ]}
+        selectedKeys={[ selectedKey]}
       >
         {ROUTES.map((route) => (
           <Menu.Item key={route.key} icon={route.icon}>

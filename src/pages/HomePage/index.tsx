@@ -26,6 +26,13 @@ const HomePage = () => {
         >
           View API Documentation
         </a>
+        <a
+          href="https://github.com/smv-engineering/smv-connect-playground"
+          target="_blank"
+          className="px-6 py-3 text-lg font-medium bg-gray-200 text-gray-900 rounded-xl shadow-md hover:bg-gray-300 transition"
+        >
+          Github Repository
+        </a>
       </div>
     </div>
   );

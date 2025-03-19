@@ -24,7 +24,7 @@ const Playgrounds = () => {
             </div>
           }
           className="rounded-lg shadow-md"
-          onClick={() => navigate(`/playground/?id=${playground.id}`)}
+          onClick={() => navigate(`/playground?id=${playground.id}`)}
         >
           <h2 className="text-xl font-semibold text-gray-800">{playground.name}</h2>
           <p className="text-gray-600 text-sm mt-2">{playground.description}</p>
